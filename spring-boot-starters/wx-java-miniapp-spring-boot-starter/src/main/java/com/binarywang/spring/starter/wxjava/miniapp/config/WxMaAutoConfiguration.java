@@ -15,6 +15,7 @@ import me.chanjar.weixin.common.redis.JedisWxRedisOps;
 import me.chanjar.weixin.common.redis.RedisTemplateWxRedisOps;
 import me.chanjar.weixin.common.redis.WxRedisOps;
 import org.apache.commons.lang3.StringUtils;
+import org.redisson.api.RedissonClient;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
@@ -132,7 +133,8 @@ public class WxMaAutoConfiguration {
 
   private WxMaDefaultConfigImpl wxMaRedisTemplateConfigStorage() {
     StringRedisTemplate redisTemplate = applicationContext.getBean(StringRedisTemplate.class);
-    WxRedisOps redisOps = new RedisTemplateWxRedisOps(redisTemplate);
+    RedissonClient redissonClient = applicationContext.getBean(RedissonClient.class);
+    WxRedisOps redisOps = new RedisTemplateWxRedisOps(redisTemplate, redissonClient);
     return new WxMaRedisBetterConfigImpl(redisOps, wxMaProperties.getConfigStorage().getKeyPrefix());
   }
 }

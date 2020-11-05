@@ -95,7 +95,8 @@ public class WxOpenStorageAutoConfiguration {
 
   private WxOpenInRedisConfigStorage getWxOpenInRedisTemplateConfigStorage() {
     StringRedisTemplate redisTemplate = applicationContext.getBean(StringRedisTemplate.class);
-    WxRedisOps redisOps = new RedisTemplateWxRedisOps(redisTemplate);
+    RedissonClient redissonClient = applicationContext.getBean(RedissonClient.class);
+    WxRedisOps redisOps = new RedisTemplateWxRedisOps(redisTemplate, redissonClient);
     WxOpenInRedisConfigStorage config = new WxOpenInRedisConfigStorage(redisOps, properties.getConfigStorage().getKeyPrefix());
     return config;
   }

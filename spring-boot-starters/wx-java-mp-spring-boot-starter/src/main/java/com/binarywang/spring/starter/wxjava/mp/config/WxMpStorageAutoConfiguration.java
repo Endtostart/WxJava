@@ -9,6 +9,7 @@ import me.chanjar.weixin.mp.config.WxMpConfigStorage;
 import me.chanjar.weixin.mp.config.impl.WxMpDefaultConfigImpl;
 import me.chanjar.weixin.mp.config.impl.WxMpRedisConfigImpl;
 import org.apache.commons.lang3.StringUtils;
+import org.redisson.api.RedissonClient;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.ApplicationContext;
@@ -73,7 +74,8 @@ public class WxMpStorageAutoConfiguration {
 
   private WxMpConfigStorage wxMpInRedisTemplateConfigStorage() {
     StringRedisTemplate redisTemplate = applicationContext.getBean(StringRedisTemplate.class);
-    WxRedisOps redisOps = new RedisTemplateWxRedisOps(redisTemplate);
+    RedissonClient redissonClient = applicationContext.getBean(RedissonClient.class);
+    WxRedisOps redisOps = new RedisTemplateWxRedisOps(redisTemplate, redissonClient);
     WxMpRedisConfigImpl wxMpRedisConfig = new WxMpRedisConfigImpl(redisOps, wxMpProperties.getConfigStorage().getKeyPrefix());
     setWxMpInfo(wxMpRedisConfig);
     return wxMpRedisConfig;

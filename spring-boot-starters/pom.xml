@@ -6,11 +6,13 @@
   <parent>
     <groupId>com.github.binarywang</groupId>
     <artifactId>wx-java</artifactId>
-    <version>3.9.0</version>
+    <version>3.9.0.1</version>
   </parent>
   <packaging>pom</packaging>
   <artifactId>wx-java-spring-boot-starters</artifactId>
   <name>WxJava - Spring Boot Starters</name>
+  <version>3.9.0.1</version>
+
   <description>WxJava 各个模块的 Spring Boot Starter</description>
 
   <properties>
