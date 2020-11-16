@@ -4,11 +4,12 @@
          xmlns="http://maven.apache.org/POM/4.0.0">
   <modelVersion>4.0.0</modelVersion>
   <parent>
-    <groupId>com.github.binarywang</groupId>
+    <groupId>com.ebuy.wechat</groupId>
     <artifactId>wx-java</artifactId>
     <version>3.9.0.1</version>
   </parent>
   <packaging>pom</packaging>
+  <groupId>com.ebuy.wechat</groupId>
   <artifactId>wx-java-spring-boot-starters</artifactId>
   <name>WxJava - Spring Boot Starters</name>
   <version>3.9.0.1</version>

@@ -4,7 +4,7 @@
          xmlns="http://maven.apache.org/POM/4.0.0">
   <modelVersion>4.0.0</modelVersion>
   <parent>
-    <groupId>com.github.binarywang</groupId>
+    <groupId>com.ebuy.wechat</groupId>
     <artifactId>wx-java</artifactId>
     <version>3.9.0.1</version>
   </parent>
@@ -169,7 +169,7 @@
               </annotationProcessors>
               <annotationProcessorPaths>
                 <path>
-                  <groupId>com.github.binarywang</groupId>
+                  <groupId>com.ebuy.wechat</groupId>
                   <artifactId>weixin-graal</artifactId>
                   <version>${project.version}</version>
                 </path>
